@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+    Bandit Report
+</title>
+
+<style>
+
+html * {
+    font-family: "Arial", sans-serif;
+}
+
+pre {
+    font-family: "Monaco", monospace;
+}
+
+.bordered-box {
+    border: 1px solid black;
+    padding-top:.5em;
+    padding-bottom:.5em;
+    padding-left:1em;
+}
+
+.metrics-box {
+    font-size: 1.1em;
+    line-height: 130%;
+}
+
+.metrics-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .25em;
+}
+
+.issue-description {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.candidate-issues {
+    margin-left: 2em;
+    border-left: solid 1px; LightGray;
+    padding-left: 5%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+.issue-block {
+    border: 1px solid LightGray;
+    padding-left: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+}
+
+.issue-sev-high {
+    background-color: Pink;
+}
+
+.issue-sev-medium {
+    background-color: NavajoWhite;
+}
+
+.issue-sev-low {
+    background-color: LightCyan;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="metrics">
+    <div class="metrics-box bordered-box">
+        <div class="metrics-title">
+            Metrics:<br>
+        </div>
+        Total lines of code: <span id="loc">570</span><br>
+        Total lines skipped (#nosec): <span id="nosec">0</span>
+    </div>
+</div>
+
+
+
+
+<br>
+<div id="results">
+    
+<div id="issue-0">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href=".\Dictapp.py" target="_blank">.\Dictapp.py</a><br>
+    <b>Line number: </b>30<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+29	            if app in query:
+30	                os.system(f&quot;start {dictapp[app]}&quot;)
+31	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-1">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href=".\Dictapp.py" target="_blank">.\Dictapp.py</a><br>
+    <b>Line number: </b>75<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+74	            if app in query:
+75	                os.system(f&quot;taskkill /f /im {dictapp[app]}.exe&quot;)
+76	        
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-2">
+<div class="issue-block issue-sev-low">
+    <b>blacklist: </b> Standard pseudo-random generators are not suitable for security/cryptographic purposes.<br>
+    <b>Test ID:</b> B311<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/330.html" target="_blank">CWE-330</a><br>
+    <b>File: </b><a href=".\Jarvis.main.py" target="_blank">.\Jarvis.main.py</a><br>
+    <b>Line number: </b>127<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/blacklists/blacklist_calls.html#b311-random" target="_blank">https://bandit.readthedocs.io/en/1.7.8/blacklists/blacklist_calls.html#b311-random</a><br>
+
+<div class="code">
+<pre>
+126	                    a = (1,2,3)
+127	                    b = random.choice(a)
+128	                    if b==1:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-3">
+<div class="issue-block issue-sev-medium">
+    <b>request_without_timeout: </b> Requests call without timeout<br>
+    <b>Test ID:</b> B113<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/400.html" target="_blank">CWE-400</a><br>
+    <b>File: </b><a href=".\Jarvis.main.py" target="_blank">.\Jarvis.main.py</a><br>
+    <b>Line number: </b>201<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b113_request_without_timeout.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b113_request_without_timeout.html</a><br>
+
+<div class="code">
+<pre>
+200	                     url = f&quot;https://www.google.co.in/search?q={search}&quot;
+201	                     r  = requests.get(url)
+202	                     data = BeautifulSoup(r.text,&quot;html.parser&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-4">
+<div class="issue-block issue-sev-medium">
+    <b>request_without_timeout: </b> Requests call without timeout<br>
+    <b>Test ID:</b> B113<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/400.html" target="_blank">CWE-400</a><br>
+    <b>File: </b><a href=".\Jarvis.main.py" target="_blank">.\Jarvis.main.py</a><br>
+    <b>Line number: </b>208<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b113_request_without_timeout.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b113_request_without_timeout.html</a><br>
+
+<div class="code">
+<pre>
+207	                     url = f&quot;https://www.google.co.in/search?q={search}&quot;
+208	                     r  = requests.get(url)
+209	                     data = BeautifulSoup(r.text,&quot;html.parser&quot;)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-5">
+<div class="issue-block issue-sev-low">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href=".\Jarvis.main.py" target="_blank">.\Jarvis.main.py</a><br>
+    <b>Line number: </b>240<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+239	                     if shutdown == &quot;yes&quot;:
+240	                      os.system(&quot;shutdown /s /t 1&quot;)
+241	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-6">
+<div class="issue-block issue-sev-low">
+    <b>start_process_with_partial_path: </b> Starting a process with a partial executable path<br>
+    <b>Test ID:</b> B607<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">CWE-78</a><br>
+    <b>File: </b><a href=".\Jarvis.main.py" target="_blank">.\Jarvis.main.py</a><br>
+    <b>Line number: </b>240<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b607_start_process_with_partial_path.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b607_start_process_with_partial_path.html</a><br>
+
+<div class="code">
+<pre>
+239	                     if shutdown == &quot;yes&quot;:
+240	                      os.system(&quot;shutdown /s /t 1&quot;)
+241	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-7">
+<div class="issue-block issue-sev-medium">
+    <b>request_without_timeout: </b> Requests call without timeout<br>
+    <b>Test ID:</b> B113<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>LOW<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/400.html" target="_blank">CWE-400</a><br>
+    <b>File: </b><a href=".\NewsRead.py" target="_blank">.\NewsRead.py</a><br>
+    <b>Line number: </b>38<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b113_request_without_timeout.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b113_request_without_timeout.html</a><br>
+
+<div class="code">
+<pre>
+37	
+38	    news = requests.get(url).text
+39	    news = json.loads(news)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-8">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href=".\chatgpt.py" target="_blank">.\chatgpt.py</a><br>
+    <b>Line number: </b>49<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+48	
+49	        except:
+50	            pass
+51	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-9">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>CWE: </b><a href="https://cwe.mitre.org/data/definitions/703.html" target="_blank">CWE-703</a><br>
+    <b>File: </b><a href=".\chatgpt.py" target="_blank">.\chatgpt.py</a><br>
+    <b>Line number: </b>68<br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/1.7.8/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/1.7.8/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+67	    
+68	    except:
+69	        pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
